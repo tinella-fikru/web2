@@ -1,0 +1,68 @@
+﻿@model Product;
+
+
+<div class="container">
+    <h3>Product Details</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                <div class="carousel-indicators">
+                    @for (int i = 0; i < Model.imageGallary.Count; i++)
+                    {
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                                data-bs-slide-to="@i" class="@(i==0? "active": "")"
+                                aria-current="true" aria-label="Slide 1"></button>
+                    }
+                </div>
+                <div class="carousel-inner">
+                    @for (int i = 0; i < Model.imageGallary.Count; i++)
+                    {
+                        <div class="@(i==0 ? "carousel-item active":"carousel-item")">
+                            <img src="@Model.imageGallary[i].url" class="d-block w-100" alt="...">
+                        </div>
+                    }
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>@Model.productName</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-primary">
+                    <span class="label label-primary">By :</span>
+                    <span class="label label-primary">Product Name</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="description">
+                        @Model.productDescription
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-outline-primary">
+                        Read Now
+                    </button>
+                </div>
+            </div>
+            <hr />
+            <ul class="list-group">
+                <li class="list-group-item"><span class="font-weight-bold">Category - </span>Sport</li>
+                <li class="list-group-item"><span class="font-weight-bold">Quantity - </span>@Model.quantity</li>
+                <li class="list-group-item"><span class="font-weight-bold">Price - </span>@Model.unitPrice</li>
+            </ul>
+        </div>
+    </div>
